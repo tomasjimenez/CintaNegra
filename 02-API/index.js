@@ -55,18 +55,29 @@ app.get('/api/usuario/:nombreUsuario', (request, response) => {
 //                         ...,
 //                     }}
 
-app.get('/api/swapi/:numeroPersonaje', (request, response) => {
-    const numeroPersonaje = request.params;
-    const SWAPI_URL = 'https://swapi.co/';
-    request.get(SWAPI_URL, (err, resp, body) => {
-        if (response.statusCode === 200) console.log(body);
-        else console.log(err);
+// app.get('/api/swapi/:character', (request, response) => {
+//     const { character } = request.params;
+//     const SWAPI_URL = `https://swapi.dev/api/people/${character}/`;
+//     request.get(SWAPI_URL, (err, resSWAPI, body) => {
+//         if (resSWAPI.statusCode === 200) {
+//         const json = JSON.parse(body);
+//         res.status(200).json({ character: jason });
+//         } 
+//     });  
+// })  
+
+app.get('/api/swapi/:character', (req, res) => {
+    const { character } = req.params;
+    const SWAPI_URL = `https://swapi.dev/api/people/${character}/`;
+    request.get(SWAPI_URL, (err, resSWAPI, body) => {
+      if (resSWAPI.statusCode === 200) {
+        const json = JSON.parse(body);
+        res.status(200).json({ character: json });
+      }
     });
+  });
 
-    response.status(200).json({ name: numeroPersonaje });
-})  
-
-
+  
 app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
 
 // const API_URL = ''
