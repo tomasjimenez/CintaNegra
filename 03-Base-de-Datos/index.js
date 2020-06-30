@@ -58,14 +58,33 @@ api.post('/api/flights', (req, res) => {
     .catch((err) => res.status(400).json(err))
 });
 
-// Read All
-
-// Read One
-
-// Update 
-
-// Delete 
-
-// Encender el servidor
+// Read ALL
+api.get('/api/flights', (req, res) => {
+    Flights.find()
+      .then((resMongo) => res.status(200).json(resMongo))
+      .catch((err) => res.status(400).json(err));
+  });
+  
+  // Read ONE
+  api.get('/api/flights/:id', (req, res) => {
+    Flights.findById(req.params.id)
+      .then((resMongo) => res.status(200).json(resMongo))
+      .catch((err) => res.status(400).json(err));
+  });
+  
+  // Update
+  api.patch('/api/flights/:id', (req, res) => {
+    Flights.findByIdAndUpdate(req.params.id, req.body, { new: true })
+      .then((resMongo) => res.status(200).json(resMongo))
+      .catch((err) => res.status(400).json(err));
+  });
+  
+  // Delete
+  api.delete('/api/flights/:id', (req, res) => {
+    Flights.findByIdAndDelete(req.params.id)
+      .then((resMongo) => res.status(204).json(resMongo))
+      .catch((err) => res.status(400).json(err));
+  });
+  
 
 api.listen(PORT, () => console.log(`Listenin on ${PORT}`))
