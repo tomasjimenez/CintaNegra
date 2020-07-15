@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require ('mongoose');
 
 mongoose.connect(
     process.env.MONGO_URI,
@@ -6,4 +6,4 @@ mongoose.connect(
 )
 
 .then(() => console.log('Database connected'))
-.catch(() => console.log('Database no connected'));
+.catch(() =>  console.log('Database no connected'));
