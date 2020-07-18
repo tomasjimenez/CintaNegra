@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-// 1) Crear una base de datos para un supermercado que pueda 
+// 1) Crear una base de datos para un supermercado que pueda
 //     almacenar lo siguiente:
 //     - Artículo
 //         -Nombre (string)
@@ -13,18 +13,18 @@ const mongoose = require('mongoose');
 //         -articulos (articulo)
 
 const productSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    price: {
-        type: Number,
-        required: true,
-    }
-    stock: {
-        type: Number,
-        default: 25,
-    },
+  name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  stock: {
+    type: Number,
+    default: 
+  },
 });
 
 const Products = mongoose.Model('Products', productSchema);
