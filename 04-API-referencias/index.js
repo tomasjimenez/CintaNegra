@@ -1,13 +1,13 @@
 require('dotenv').config();
 require('./mongoClient/index.js');
-const express = require ('express');
+const express = require('express');
 const api = express();
 const PORT = process.env.PORT || 3000;
 
-api.use(express.urlencoded({ extended:true }));
-api.use(express.json({ extended:true }))
+api.use(express.urlencoded({ extended: true }));
+api.use(express.json({ extended: true }))
 
-const Products = require ('./models/Products');
+const Products = require('./models/Products');
 
 api.get('/', (req, res) => res.json({ message: "It's alive"}));
 

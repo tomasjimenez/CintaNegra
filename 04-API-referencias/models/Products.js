@@ -23,10 +23,10 @@ const productSchema = new mongoose.Schema({
   },
   stock: {
     type: Number,
-    default: 
+    default: 25,
   },
 });
 
-const Products = mongoose.Model('Products', productSchema);
+const Products = mongoose.model('Products', productSchema);
 
 module.exports = Products;
